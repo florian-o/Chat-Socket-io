@@ -3,6 +3,12 @@ h1{
     text-decoration: underline;
     color: #8a5506;
 }
+p{
+    display: block;
+    margin-left: 1em;
+    color: #8a5506;
+    font-size: 1.5em;
+}
 #chat-app{
     margin: 0 auto;
 }
