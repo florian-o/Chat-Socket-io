@@ -1,0 +1,43 @@
+h1{
+    text-align: center;
+    text-decoration: underline;
+    color: #8a5506;
+}
+#chat-app{
+    margin: 0 auto;
+}
+#main-chat{
+    max-width: 500px;
+    margin: 30px auto;
+    border: 1px solid black;
+    border-radius: 3px 3px;
+  
+}
+#window{
+
+    height: 400px;
+    background: #f9f9f9;
+}
+
+input{
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background: #eee;
+    border: 0;
+    display: block;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+}
+
+button{
+    background: #8a5506;
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+    padding: 12px 0;
+    width: 100%;
+    
+}
+
