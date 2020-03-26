@@ -1,4 +1,5 @@
-
+// creating connection -client
+const socket = io.connect('http://localhost:8080');
 
 // Catch Dom
 
