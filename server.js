@@ -1,5 +1,4 @@
 const express = require('express');
-
 const socket = require('socket.io');
 
 const port = 8080;
@@ -9,13 +8,21 @@ const app = express();
 const server = app.listen(port, () => {
     console.log(`ecoute sur le port ${port}`);    
 });
+
 app.use(express.static('public'));
 
 // Setup Socket-server
 const io = socket(server);
 
 io.on('connection',(socket)=>{
-    console.log('creating connection',socket.id);
+    console.log('creating connection',socket.id);      
     
-})
+    socket.on('chat',(data)=>{
+        io.sockets.emit('chat',data)
+    });    
+
+    socket.on('typing',(data) =>{
+        socket.broadcast.emit('typing', data);
+    });
+});
 

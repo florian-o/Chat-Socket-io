@@ -1,29 +1,31 @@
 // creating connection -client
 const socket = io.connect('http://localhost:8080');
 
-// Catch Dom
-
+// Dom
 const message = document.getElementById('message'),
 user = document.getElementById('user'),
 btn = document.getElementById('send'),
-output = document.getElementById('feedback');
+output = document.getElementById('output'),
+feedback = document.getElementById('feedback');
 
-
-btn.addEventListener('click', () => {
-    console.log({dataUser,dataMsg}); 
-    output.insertAdjacentHTML('beforebegin', `<p><span>${dataUser}:</span> ${dataMsg}</p>`);     
-    message.value = "";
-    user.value = "";    
+// Sending msg
+btn.addEventListener('click',()=>{
+    socket.emit('chat',{
+        message:message.value,
+        user:user.value
+    });
 });
 
-message.addEventListener('keyup', evt => {
-   dataMsg =  evt.target.value ;           
+message.addEventListener('keypress',() => {
+    socket.emit('typing',user.value);
 });
 
-user.addEventListener('keyup',evt => {
-   dataUser = evt.target.value;     
+socket.on('chat',(data)=>{
+    feedback.innerHTML =''
+    output.innerHTML += '<p><strong>'+ data.user +':</strong>' + data.message +'</p>'
 });
 
 
-
-
+socket.on('typing',(data)=>{
+    feedback.innerHTML = '<p><em>' + data + ' est en train d\'ecrire... '+ '</em></p>';    
+});
