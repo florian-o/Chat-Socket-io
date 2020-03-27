@@ -1,2 +1,3 @@
 # Chat-Socket-io
-Creating a chat with socket.io
+Creating a simple chat with socket.io
+
